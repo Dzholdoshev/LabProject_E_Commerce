@@ -24,4 +24,5 @@ public abstract class Category {
     public String generateCategoryCode() {
         return this.id.toString().substring(0, 8).concat("-").concat(this.name.substring(0, 2));
     }
+
 }

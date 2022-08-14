@@ -16,7 +16,7 @@ public class Electronic extends Category {
     }
 
     public String generateCategoryCode() {
-        String var10000 = this.getId().toString();
-        return "EL-" + var10000.substring(0, 8);
+
+        return "EL-" + getId().toString().substring(0, 8);
     }
 }
