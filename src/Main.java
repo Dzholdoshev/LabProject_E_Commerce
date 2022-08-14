@@ -7,9 +7,13 @@ public class    Main {
     public static void main(String[] args) {
 
         DataGenerator.createCustomer();
+        System.out.println(StaticConstants.CUSTOMER_LIST);
         DataGenerator.createCategory();
+        System.out.println(StaticConstants.CATEGORY_LIST);
         DataGenerator.createProduct();
+        System.out.println(StaticConstants.PRODUCT_LIST);
         DataGenerator.createBalance();
+        System.out.println(StaticConstants.BALANCE_LIST);
         DataGenerator.createDiscount();
 
 
@@ -42,7 +46,7 @@ public class    Main {
                 case 1://list products //product name // product category
 
                     for (Product product:StaticConstants.PRODUCT_LIST) {
-                        System.out.println("Product name: "+ product.getName()+ " Product Category: "+ product.getCategoryName());
+                        System.out.println("Product name: "+ product.getName()+ " Product Category Name: "+ product.getCategoryName());
 
                     }
                     break;

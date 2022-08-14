@@ -25,8 +25,18 @@ public abstract class   Category {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
+
+
 }
 
