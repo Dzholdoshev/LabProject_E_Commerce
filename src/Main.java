@@ -3,15 +3,17 @@ import category.Category;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class    Main {
     public static void main(String[] args) {
 
-
+        DataGenerator.createCustomer();
         DataGenerator.createCategory();
         DataGenerator.createProduct();
-        DataGenerator.createCustomer();
         DataGenerator.createBalance();
         DataGenerator.createDiscount();
+
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select Customer:");
 
@@ -37,8 +39,12 @@ public class Main {
                     }
 
                     break;
-                case 1:
-                    System.out.println(StaticConstants.PRODUCT_LIST);
+                case 1://list products //product name // product category
+
+                    for (Product product:StaticConstants.PRODUCT_LIST) {
+                        System.out.println("Product name: "+ product.getName()+ " Product Category: "+ product.getCategoryName());
+
+                    }
                     break;
                 case 2:
                     System.out.println(StaticConstants.DISCOUNT_LIST);
@@ -67,6 +73,8 @@ public class Main {
             }
 
         }
+
+
     }
 
     private static String[] prepareMenuOptions (){

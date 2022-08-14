@@ -1,4 +1,6 @@
 
+import category.Category;
+
 import java.util.UUID;
 
 public class Product {
@@ -41,5 +43,18 @@ public class Product {
     public UUID getCategoryId() {
         return this.categoryId;
     }
-}
 
+
+    public String getCategoryName() {
+        for (Category category : StaticConstants.CATEGORY_LIST) {
+
+            if (getCategoryId().toString().equals(category.getId().toString())) {
+                return category.getName();
+            }
+
+        }return getCategoryName();
+    }
+
+
+
+}
