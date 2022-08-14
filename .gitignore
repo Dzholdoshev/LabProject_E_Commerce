@@ -2,4 +2,5 @@ LabProject_E_Commerce.iml
 .idea
 *.iml
 out
-
+# ignore all logs
+*.log
