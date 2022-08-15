@@ -34,18 +34,22 @@ public class DataGenerator {
         Category category1 = new Electronic(UUID.randomUUID(), "Electronic");
         Category category2 = new Furniture(UUID.randomUUID(), "Furniture");
         Category category3 = new SkinCare(UUID.randomUUID(), "SkinCare");
+        Category category4 = new SkinCare(UUID.randomUUID(), "Food");
         StaticConstants.CATEGORY_LIST.add(category1);
         StaticConstants.CATEGORY_LIST.add(category2);
         StaticConstants.CATEGORY_LIST.add(category3);
+        StaticConstants.CATEGORY_LIST.add(category4);
     }
 
     public static void createProduct() {
         Product product1 = new Product(UUID.randomUUID(), "PS5", 230.72, 7, 7, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
         Product product2 = new Product(UUID.randomUUID(), "XBOX", 120.34, 15, 15, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
         Product product3 = new Product(UUID.randomUUID(), "Chair", 30.87, 85, 85, ((Category) StaticConstants.CATEGORY_LIST.get(1)).getId());
+        Product product4 = new Product(UUID.randomUUID(), "Milk", 3.87, 185, 185, ((Category) StaticConstants.CATEGORY_LIST.get(2)).getId());
         StaticConstants.PRODUCT_LIST.add(product1);
         StaticConstants.PRODUCT_LIST.add(product2);
         StaticConstants.PRODUCT_LIST.add(product3);
+        StaticConstants.PRODUCT_LIST.add(product4);
     }
 
     public static void createBalance() {

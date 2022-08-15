@@ -46,7 +46,11 @@ public class    Main {
                 case 1://list products //product name // product category
 
                     for (Product product:StaticConstants.PRODUCT_LIST) {
-                        System.out.println("Product name: "+ product.getName()+ " Product Category Name: "+ product.getCategoryName());
+                        try {
+                            System.out.println("Product name: "+ product.getName()+ " Product Category Name: "+ product.getCategoryName());
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
 
                     }
                     break;

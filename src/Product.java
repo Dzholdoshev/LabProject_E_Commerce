@@ -45,14 +45,14 @@ public class Product {
     }
 
 
-    public String getCategoryName() {
+    public String getCategoryName() throws Exception {
         for (Category category : StaticConstants.CATEGORY_LIST) {
 
             if (getCategoryId().toString().equals(category.getId().toString())) {
                 return category.getName();
             }
 
-        }return getCategoryName();
+        }throw new Exception("Category is not found" + getName());
     }
 
 
