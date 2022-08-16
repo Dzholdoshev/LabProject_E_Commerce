@@ -45,17 +45,19 @@ public class DataGenerator {
         Product product1 = new Product(UUID.randomUUID(), "PS5", 230.72, 7, 7, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
         Product product2 = new Product(UUID.randomUUID(), "XBOX", 120.34, 15, 15, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
         Product product3 = new Product(UUID.randomUUID(), "Chair", 30.87, 85, 85, ((Category) StaticConstants.CATEGORY_LIST.get(1)).getId());
-        Product product4 = new Product(UUID.randomUUID(), "Milk", 3.87, 185, 185, ((Category) StaticConstants.CATEGORY_LIST.get(2)).getId());
+        Product product4 = new Product(UUID.randomUUID(), "Milk", 3.87, 185, 185, UUID.randomUUID());
+
         StaticConstants.PRODUCT_LIST.add(product1);
         StaticConstants.PRODUCT_LIST.add(product2);
         StaticConstants.PRODUCT_LIST.add(product3);
         StaticConstants.PRODUCT_LIST.add(product4);
+
     }
 
     public static void createBalance() {
         Balance customerBalance = new CustomerBalance(((Customer) StaticConstants.CUSTOMER_LIST.get(0)).getId(), 1000.22);
         Balance giftCardBalance = new GiftCardBalance(((Customer) StaticConstants.CUSTOMER_LIST.get(0)).getId(), 500.0);
-        StaticConstants.BALANCE_LIST.add(customerBalance);
+        StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance);
         StaticConstants.GIFT_CARD_BALANCE_LIST.add(giftCardBalance);
     }
 

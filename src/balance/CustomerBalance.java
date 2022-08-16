@@ -13,4 +13,6 @@ public class CustomerBalance extends Balance {
         this.setBalance(this.getBalance() + additionalBalance);
         return this.getBalance();
     }
+
+
 }

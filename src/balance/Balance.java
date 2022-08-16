@@ -25,4 +25,11 @@ public abstract class Balance {
 
     public abstract Double addBalance(Double additionalBalance);
 
+    @Override
+    public String toString() {
+        return "Balance{" +
+                "customerID=" + customerID +
+                ", balance=" + balance +
+                '}';
+    }
 }

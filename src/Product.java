@@ -44,17 +44,29 @@ public class Product {
         return this.categoryId;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", remainingStock=" + remainingStock +
+                ", categoryId=" + categoryId +
+                '}';
+    }
 
     public String getCategoryName() throws Exception {
         for (Category category : StaticConstants.CATEGORY_LIST) {
-
             if (getCategoryId().toString().equals(category.getId().toString())) {
                 return category.getName();
             }
 
-        }throw new Exception("Category is not found" + getName());
+        }
+        throw new Exception("Category is not found," + getName());
+
+
+
+
     }
-
-
-
 }
