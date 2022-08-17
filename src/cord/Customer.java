@@ -1,3 +1,5 @@
+package cord;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -37,6 +39,6 @@ public class Customer {
     }
 
     public String toString() {
-        return "Customer{id=" + this.id + ", userName='" + this.userName + "', email='" + this.email + "', address=" + this.address + "}";
+        return "cord.Customer{id=" + this.id + ", userName='" + this.userName + "', email='" + this.email + "', address=" + this.address + "}";
     }
 }

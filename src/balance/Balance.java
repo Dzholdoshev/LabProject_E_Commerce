@@ -3,11 +3,11 @@ package balance;
 import java.util.UUID;
 
 public abstract class Balance {
-    private UUID customerID;
+    private UUID customerId;
     private Double balance;
 
-    public Balance(UUID customerID, Double balance) {
-        this.customerID = customerID;
+    public Balance(UUID customerId, Double balance) {
+        this.customerId = customerId;
         this.balance = balance;
     }
 
@@ -15,8 +15,8 @@ public abstract class Balance {
         this.balance = balance;
     }
 
-    public UUID getCustomerID() {
-        return customerID;
+    public UUID getCustomerId() {
+        return customerId;
     }
 
     public Double getBalance() {
@@ -28,7 +28,7 @@ public abstract class Balance {
     @Override
     public String toString() {
         return "Balance{" +
-                "customerID=" + customerID +
+                "customerID=" + customerId +
                 ", balance=" + balance +
                 '}';
     }

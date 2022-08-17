@@ -1,5 +1,8 @@
 package discount;
 
+
+import cord.Cart;
+
 import java.util.UUID;
 
 public abstract class Discount {
@@ -12,11 +15,11 @@ public abstract class Discount {
         this.name = name;
         this.thresholdAmount = thresholdAmount;
     }
-    public boolean decideDiscountIsApplicableToCart(){
-        return true;//cart.calculateCartTotalAmount() > thresholdAmount;
+    public boolean decideDiscountIsApplicableToCart(Cart cart){
+        return cart.calculateCartTotalAmount() > thresholdAmount;
     }
 
-    public abstract Double calculateCartAmountDiscountApplied(Double amount);
+    public abstract Double calculateCartAmountAfterDiscountApplied(Double amount);
 
     public UUID getId() {
         return id;

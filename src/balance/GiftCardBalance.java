@@ -5,8 +5,8 @@ import balance.Balance;
 import java.util.UUID;
 
 public class GiftCardBalance extends Balance {
-    public GiftCardBalance(UUID customerID, Double balance) {
-        super(customerID, balance);
+    public GiftCardBalance(UUID customerId, Double balance) {
+        super(customerId, balance);
     }
 
     @Override

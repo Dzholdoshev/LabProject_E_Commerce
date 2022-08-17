@@ -1,8 +1,13 @@
+package cord;
+
 import balance.Balance;
 import balance.CustomerBalance;
 import balance.GiftCardBalance;
 import category.Category;
 import discount.Discount;
+import order.Order;
+import order.OrderService;
+import order.OrderServiceImpl;
 
 
 import java.util.HashMap;
@@ -26,7 +31,7 @@ public class Main {
         System.out.println(StaticConstants.CUSTOMER_BALANCE_LIST.get(0).getBalance());
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select Customer:");
+        System.out.println("Select cord.Customer:");
 
         for (int i = 0; i < StaticConstants.CUSTOMER_LIST.size(); ++i) {
             System.out.println("Type " + i + " for customer:" + (StaticConstants.CUSTOMER_LIST.get(i)).getUserName());
@@ -56,10 +61,10 @@ public class Main {
                 case 1://list products //product name // product category
                     try {
                         for (Product product : StaticConstants.PRODUCT_LIST) {
-                            System.out.println("Product Name:" + product.getName() + "Product Category Name:" + product.getCategoryName() + " Stock " + product.getRemainingStock());
+                            System.out.println("cord.Product Name:" + product.getName() + "cord.Product Category Name:" + product.getCategoryName() + " Stock " + product.getRemainingStock());
                         }
                     } catch (Exception e) {
-                        System.out.println("Product could not printed because category not found for product name:" + e.getMessage().split(",")[1]);
+                        System.out.println("cord.Product could not printed because category not found for product name:" + e.getMessage().split(",")[1]);
                     }
                     break;
                 case 2:
@@ -74,7 +79,7 @@ public class Main {
                     GiftCardBalance gBalance = findGiftCardBalance(customer.getId());
                     double totalBalance = cBalance.getBalance() + gBalance.getBalance();
                     System.out.println("Total Balance: " + totalBalance);
-                    System.out.println("Customer Balance: " + cBalance.getBalance());
+                    System.out.println("cord.Customer Balance: " + cBalance.getBalance());
                     System.out.println("Gift Card Balance: " + gBalance.getBalance());
 
                     break;
@@ -83,7 +88,7 @@ public class Main {
                     GiftCardBalance giftCardBalance = findGiftCardBalance(customer.getId());
 
                     System.out.println("Which account would like to add? ");
-                    System.out.println("Type 1 for Customer Balance " + customerBalance.getBalance());
+                    System.out.println("Type 1 for cord.Customer Balance " + customerBalance.getBalance());
                     System.out.println("Type 2 for Gift Card Balance " + giftCardBalance.getBalance());
                     int balanceSelection = scanner.nextInt();
 
@@ -94,7 +99,7 @@ public class Main {
                     switch (balanceSelection) {
                         case 1:
                             customerBalance.addBalance(additionalAmount);
-                            System.out.println("New Customer Balance: " + customerBalance.getBalance());
+                            System.out.println("New cord.Customer Balance: " + customerBalance.getBalance());
                             break;
                         case 2:
                             giftCardBalance.addBalance(additionalAmount);
@@ -118,11 +123,11 @@ public class Main {
 
                             try {
                                 System.out.println("ID" + product.getId() +
-                                        " Product name: " + product.getName() +
+                                        " cord.Product name: " + product.getName() +
                                         " Price: " + product.getPrice() +
                                         "Stock: " + product.getRemainingStock() +
                                         "category name " + product.getCategoryId() +
-                                        " Product delivery due " + product.getDeliveryDueDate());
+                                        " cord.Product delivery due " + product.getDeliveryDueDate());
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }
@@ -139,7 +144,7 @@ public class Main {
                                 continue;
                             }
                         } catch (Exception e) {
-                            System.out.println("Product doesn't exist. please try again");
+                            System.out.println("cord.Product doesn't exist. please try again");
                             ;
                             continue;
                         }
@@ -163,7 +168,7 @@ public class Main {
                     if (!discountId.equals("no")) {
                         try {
                             Discount discount = findDiscountById(discountId);
-                            if (discount.decideDiscountIsApplicableToCart()) {
+                            if (discount.decideDiscountIsApplicableToCart(cart)) {
                                 cart.setDiscountId(discount.getId());
                             }
                         } catch (Exception e) {
@@ -172,16 +177,35 @@ public class Main {
 
                     }
 
+                    OrderService orderService = new OrderServiceImpl();
+                    String result = orderService.placeOrder(cart);
+                    if (result.equals("Order has been placed successfully")) {
+                        System.out.println("Order is successful");
+                        updateProductStock(cart.getProductMap());
+                        cart.setProductMap(new HashMap<>());
+                        cart.setDiscountId(null);
+                    } else {
+                        System.out.println(result);
+                    }
                     break;
                 case 6:
+                    System.out.println("Your Cart");
+                    if (!cart.getProductMap().keySet().isEmpty()) {
+                        for (Product product : cart.getProductMap().keySet()) {
+                            System.out.println("product name: " + product.getName() + " count: " + cart.getProductMap().get(product));
+                        }
+                    } else {
+                        System.out.println("Your cart is empty");
+                    }
                     break;
                 case 7:
+                    printOrdersByCustomerId(customer.getId());
                     break;
                 case 8:
+                    printAddressByCustomerId(customer);
                     break;
                 case 9:
-                    break;
-                case 10:
+                    System.exit(1);
                     break;
 
 
@@ -192,14 +216,18 @@ public class Main {
 
     }
 
-private static Discount findDiscountById(String discountId) throws Exception{
-for(Discount discount: StaticConstants.DISCOUNT_LIST){
-if(discount.getId().toString().equals(discountId)){
-return discount;
-}
-}
-    throw new Exception("Discount couldn't applied because couldn't found");
-}
+
+
+
+
+    private static Discount findDiscountById(String discountId) throws Exception {
+        for (Discount discount : StaticConstants.DISCOUNT_LIST) {
+            if (discount.getId().toString().equals(discountId)) {
+                return discount;
+            }
+        }
+        throw new Exception("Discount couldn't applied because couldn't found");
+    }
 
 
     private static boolean putItemCartIfStockAvailable(Cart cart, Product product) {
@@ -221,7 +249,7 @@ return discount;
 
     public static CustomerBalance findCustomerBalance(UUID customerID) {
         for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
-            if (customerBalance.getCustomerID().toString().equals(customerID.toString())) {
+            if (customerBalance.getCustomerId().toString().equals(customerID.toString())) {
                 return (CustomerBalance) customerBalance;
             }
 
@@ -246,7 +274,7 @@ return discount;
 
     public static GiftCardBalance findGiftCardBalance(UUID customerID) {
         for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
-            if (giftCardBalance.getCustomerID().toString().equals(customerID.toString())) {
+            if (giftCardBalance.getCustomerId().toString().equals(customerID.toString())) {
                 return (GiftCardBalance) giftCardBalance;
             }
         }
@@ -257,10 +285,34 @@ return discount;
 
     }
 
+    private static void printAddressByCustomerId(Customer customer) {
+        for (Address address : customer.getAddress()) {
+            System.out.println(" Street Name: " + address.getStreetName() +
+                    " Street Number: " + address.getStreetNumber() + "ZipCode:  "
+                    + address.getZipCode() + " State: " + address.getState());
+        }
+    }
+
+    private static void printOrdersByCustomerId(UUID customerId) {
+        for (Order order : StaticConstants.ORDER_LIST) {
+            if (order.getCustomerId().toString().equals(customerId.toString())) {
+                System.out.println("Order status: " + order.getOrderStatus() + " order amount " + order.getPaidAmount() + " order date " + order.getOrderDate());
+            }
+        }
+    }
+
+
+    private static void updateProductStock(Map<Product, Integer> map) {
+        for (Product product : map.keySet()) {
+            product.setRemainingStock(product.getRemainingStock() - map.get(product));
+        }
+    }
+
+
     private static String[] prepareMenuOptions() {
 
         return new String[]{"List Categories", "List Products", "List Discount", "See Balance", "Add Balance",
-                "Place an order", "See Cart", "See Order Details", "See your address", "Close App"};
+                "Place an order", "See cord.Cart", "See Order Details", "See your address", "Close App"};
     }
 
     ;

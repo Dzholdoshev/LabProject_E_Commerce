@@ -1,7 +1,7 @@
+package cord;
 
 import category.Category;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -48,7 +48,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "cord.Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
@@ -80,6 +80,7 @@ public class Product {
 
     }
 
-
-
+    public void setRemainingStock(Integer remainingStock) {
+        this.remainingStock = remainingStock;
+    }
 }

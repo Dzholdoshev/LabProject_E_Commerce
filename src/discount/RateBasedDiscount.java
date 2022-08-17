@@ -2,7 +2,7 @@ package discount;
 
 import java.util.UUID;
 
-public class RateBasedDiscount extends Discount{
+public class RateBasedDiscount extends Discount {
 
     private Double rateAmount;
 
@@ -11,12 +11,16 @@ public class RateBasedDiscount extends Discount{
         this.rateAmount = rateAmount;
     }
 
+    @Override
+    public Double calculateCartAmountAfterDiscountApplied(Double amount) {
+        return amount - (amount * rateAmount / 100);
+
+        // 400 %15 = 340
+    }
+
     public Double getRateAmount() {
         return rateAmount;
     }
 
-    @Override
-    public Double calculateCartAmountDiscountApplied(Double amount) {
-        return null;
-    }
+
 }
