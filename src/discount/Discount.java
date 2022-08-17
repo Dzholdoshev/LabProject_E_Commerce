@@ -12,6 +12,9 @@ public abstract class Discount {
         this.name = name;
         this.thresholdAmount = thresholdAmount;
     }
+    public boolean decideDiscountIsApplicableToCart(){
+        return true;//cart.calculateCartTotalAmount() > thresholdAmount;
+    }
 
     public abstract Double calculateCartAmountDiscountApplied(Double amount);
 
