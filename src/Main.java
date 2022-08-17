@@ -4,7 +4,11 @@ import balance.GiftCardBalance;
 import category.Category;
 import discount.Discount;
 
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
