@@ -6,14 +6,14 @@ import java.util.UUID;
 public class Cart {
 
     private Customer customer;
-    private UUID discountId;
+    private Integer discountId;
     private Map<Product,Integer> productMap;
 
     public Cart(Customer customer) {
         this.customer = customer;
     }
 
-    public Cart(Customer customer, UUID discountId, Map<Product, Integer> productMap) {
+    public Cart(Customer customer, Integer discountId, Map<Product, Integer> productMap) {
         this.customer = customer;
         this.discountId = discountId;
         this.productMap = productMap;
@@ -35,11 +35,11 @@ public class Cart {
         this.customer = customer;
     }
 
-    public UUID getDiscountId() {
+    public Integer getDiscountId() {
         return discountId;
     }
 
-    public void setDiscountId(UUID discountID) {
+    public void setDiscountId(Integer discountID) {
         this.discountId = discountID;
     }
 

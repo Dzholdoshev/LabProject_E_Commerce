@@ -7,7 +7,7 @@ public class AmountBasedDiscount extends Discount {
 private Double discountAmount;
 
 
-    public AmountBasedDiscount(UUID id, String name, Double thresholdAmount, Double discountAmount) {
+    public AmountBasedDiscount(Integer id, String name, Double thresholdAmount, Double discountAmount) {
         super(id, name, thresholdAmount);
         this.discountAmount = discountAmount;
     }

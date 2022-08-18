@@ -10,16 +10,16 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Order {
-    private UUID id;
+    private Integer id;
     private LocalDateTime orderDate;
     private Double cartTotalAmount;
     private Double paidAmount;
     private Double discountAmount;
-    private UUID customerId;
+    private Integer customerId;
     private String orderStatus;
     private Set<Product> productList;
 
-    public Order(UUID id, LocalDateTime orderDate, Double cartTotalAmount, Double paidAmount, Double discountAmount, UUID customerId, String orderStatus, Set<Product> productList) {
+    public Order(Integer id, LocalDateTime orderDate, Double cartTotalAmount, Double paidAmount, Double discountAmount, Integer customerId, String orderStatus, Set<Product> productList) {
         this.id = id;
         this.orderDate = orderDate;
         this.cartTotalAmount = cartTotalAmount;
@@ -30,11 +30,11 @@ public class Order {
         this.productList = productList;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -79,11 +79,11 @@ public class Order {
         this.discountAmount = discountAmount;
     }
 
-    public UUID getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(UUID customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 

@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
 
 
         if (checkoutResult){
-            Order order = new Order(UUID.randomUUID(), LocalDateTime.now(),
+            Order order = new Order((int) (Math.random()*1000000), LocalDateTime.now(),
                     cart.calculateCartTotalAmount(), amountAfterDiscount,
                     cart.calculateCartTotalAmount() - amountAfterDiscount, cart.getCustomer().getId()
                     , "Placed", cart.getProductMap().keySet());
@@ -56,7 +56,7 @@ public class OrderServiceImpl implements OrderService{
         }
     }
 
-    private Discount findDiscountById(UUID discountId) throws Exception {
+    private Discount findDiscountById(Integer discountId) throws Exception {
         for (Discount discount : StaticConstants.DISCOUNT_LIST){
             if (discount.getId().toString().equals(discountId.toString())){
                 return discount;

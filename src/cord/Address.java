@@ -34,4 +34,15 @@ public class Address {
     public String getState() {
         return this.state;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "streetNumber='" + streetNumber + '\'' +
+                ", streetName='" + streetName + '\'' +
+                ", additionalAddressLine='" + additionalAddressLine + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

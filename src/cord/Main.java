@@ -13,7 +13,7 @@ import order.OrderServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.UUID;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -28,10 +28,9 @@ public class Main {
         System.out.println(StaticConstants.CUSTOMER_BALANCE_LIST);
         DataGenerator.createDiscount();
 
-        System.out.println(StaticConstants.CUSTOMER_BALANCE_LIST.get(0).getBalance());
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select cord.Customer:");
+        System.out.println("Select Customer:");
 
         for (int i = 0; i < StaticConstants.CUSTOMER_LIST.size(); ++i) {
             System.out.println("Type " + i + " for customer:" + (StaticConstants.CUSTOMER_LIST.get(i)).getUserName());
@@ -61,10 +60,10 @@ public class Main {
                 case 1://list products //product name // product category
                     try {
                         for (Product product : StaticConstants.PRODUCT_LIST) {
-                            System.out.println("cord.Product Name:" + product.getName() + "cord.Product Category Name:" + product.getCategoryName() + " Stock " + product.getRemainingStock());
+                            System.out.println("Product Name:" + product.getName() + "Product Category Name:" + product.getCategoryName() + " Stock " + product.getRemainingStock());
                         }
                     } catch (Exception e) {
-                        System.out.println("cord.Product could not printed because category not found for product name:" + e.getMessage().split(",")[1]);
+                        System.out.println("Product could not printed because category not found for product name:" + e.getMessage().split(",")[1]);
                     }
                     break;
                 case 2:
@@ -79,7 +78,7 @@ public class Main {
                     GiftCardBalance gBalance = findGiftCardBalance(customer.getId());
                     double totalBalance = cBalance.getBalance() + gBalance.getBalance();
                     System.out.println("Total Balance: " + totalBalance);
-                    System.out.println("cord.Customer Balance: " + cBalance.getBalance());
+                    System.out.println("Customer Balance: " + cBalance.getBalance());
                     System.out.println("Gift Card Balance: " + gBalance.getBalance());
 
                     break;
@@ -99,7 +98,7 @@ public class Main {
                     switch (balanceSelection) {
                         case 1:
                             customerBalance.addBalance(additionalAmount);
-                            System.out.println("New cord.Customer Balance: " + customerBalance.getBalance());
+                            System.out.println("New Customer Balance: " + customerBalance.getBalance());
                             break;
                         case 2:
                             giftCardBalance.addBalance(additionalAmount);
@@ -217,9 +216,6 @@ public class Main {
     }
 
 
-
-
-
     private static Discount findDiscountById(String discountId) throws Exception {
         for (Discount discount : StaticConstants.DISCOUNT_LIST) {
             if (discount.getId().toString().equals(discountId)) {
@@ -247,7 +243,7 @@ public class Main {
         return false;
     }
 
-    public static CustomerBalance findCustomerBalance(UUID customerID) {
+    public static CustomerBalance findCustomerBalance(Integer customerID) {
         for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
             if (customerBalance.getCustomerId().toString().equals(customerID.toString())) {
                 return (CustomerBalance) customerBalance;
@@ -272,7 +268,7 @@ public class Main {
         throw new Exception("product not found");
     }
 
-    public static GiftCardBalance findGiftCardBalance(UUID customerID) {
+    public static GiftCardBalance findGiftCardBalance(Integer customerID) {
         for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
             if (giftCardBalance.getCustomerId().toString().equals(customerID.toString())) {
                 return (GiftCardBalance) giftCardBalance;
@@ -293,7 +289,7 @@ public class Main {
         }
     }
 
-    private static void printOrdersByCustomerId(UUID customerId) {
+    private static void printOrdersByCustomerId(Integer customerId) {
         for (Order order : StaticConstants.ORDER_LIST) {
             if (order.getCustomerId().toString().equals(customerId.toString())) {
                 System.out.println("Order status: " + order.getOrderStatus() + " order amount " + order.getPaidAmount() + " order date " + order.getOrderDate());

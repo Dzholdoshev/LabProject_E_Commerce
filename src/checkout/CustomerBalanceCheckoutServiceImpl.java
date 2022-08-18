@@ -22,7 +22,7 @@ public class CustomerBalanceCheckoutServiceImpl implements CheckoutService{
         return false;
     }
 
-    private static CustomerBalance findCustomerBalance(UUID customerId){
+    private static CustomerBalance findCustomerBalance(Integer customerId){
         for(Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST){
             if(customerBalance.getCustomerId().toString().equals(customerId.toString())){
                 return (CustomerBalance) customerBalance;

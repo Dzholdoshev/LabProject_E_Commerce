@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class SkinCare extends Category{
 
-    public SkinCare(UUID id, String name) {
+    public SkinCare(Integer id, String name) {
         super(id, name);
     }
 

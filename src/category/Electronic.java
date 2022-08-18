@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Electronic extends Category{
 
-    public Electronic(UUID id, String name) {
+    public Electronic(Integer id, String name) {
         super(id, name);
     }
 

@@ -6,11 +6,11 @@ import cord.Cart;
 import java.util.UUID;
 
 public abstract class Discount {
-    private UUID id;
+    private Integer id;
     private String name;
     private Double thresholdAmount;
 
-    public Discount(UUID id, String name, Double thresholdAmount) {
+    public Discount(Integer id, String name, Double thresholdAmount) {
         this.id = id;
         this.name = name;
         this.thresholdAmount = thresholdAmount;
@@ -21,7 +21,7 @@ public abstract class Discount {
 
     public abstract Double calculateCartAmountAfterDiscountApplied(Double amount);
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 

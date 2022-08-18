@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public abstract class   Category {
 
-    private UUID id;
+    private Integer id;
     private String name;
 
-    public Category(UUID id, String name) {
+    public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -21,7 +21,7 @@ public abstract class   Category {
         return id.toString().substring(0,8).concat("-").concat(name.substring(0,2));
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -30,7 +30,7 @@ public abstract class   Category {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                '}';
+                '}'+"\n";
     }
 
     public String getName() {

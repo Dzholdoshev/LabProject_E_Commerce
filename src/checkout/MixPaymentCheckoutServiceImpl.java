@@ -44,7 +44,7 @@ public class MixPaymentCheckoutServiceImpl implements CheckoutService{
 
         return false;
     }
-    private static GiftCardBalance findGiftCardBalance(UUID customerId){
+    private static GiftCardBalance findGiftCardBalance(Integer customerId){
         for(Balance giftCarBalance : StaticConstants.GIFT_CARD_BALANCE_LIST){
             if(giftCarBalance.getCustomerId().toString().equals(customerId.toString())){
                 return  (GiftCardBalance) giftCarBalance;
@@ -57,7 +57,7 @@ public class MixPaymentCheckoutServiceImpl implements CheckoutService{
         return giftCarBalance;
     }
 
-    private static CustomerBalance findCustomerBalance(UUID customerId){
+    private static CustomerBalance findCustomerBalance(Integer customerId){
         for(Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST){
             if(customerBalance.getCustomerId().toString().equals(customerId.toString())){
                 return (CustomerBalance) customerBalance;

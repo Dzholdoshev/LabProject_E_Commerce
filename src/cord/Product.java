@@ -6,14 +6,14 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Product {
-    private UUID id;
+    private Integer id;
     private String name;
     private Double price;
     private Integer stock;
     private Integer remainingStock;
-    private UUID categoryId;
+    private Integer categoryId;
 
-    public Product(UUID id, String name, Double price, Integer stock, Integer remainingStock, UUID categoryId) {
+    public Product(Integer id, String name, Double price, Integer stock, Integer remainingStock, Integer categoryId) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -22,7 +22,7 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return this.id;
     }
 
@@ -42,20 +42,20 @@ public class Product {
         return this.remainingStock;
     }
 
-    public UUID getCategoryId() {
+    public Integer getCategoryId() {
         return this.categoryId;
     }
 
     @Override
     public String toString() {
-        return "cord.Product{" +
+        return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
                 ", remainingStock=" + remainingStock +
                 ", categoryId=" + categoryId +
-                '}';
+                '}'+"\n";
     }
 
     public String getCategoryName() throws Exception {

@@ -4,25 +4,25 @@ import java.util.List;
 import java.util.UUID;
 
 public class Customer {
-    private UUID id;
+    private Integer id;
     private String userName;
     private String email;
     private List<Address> address;
 
-    public Customer(UUID id, String userName, String email) {
+    public Customer(Integer id, String userName, String email) {
         this.id = id;
         this.userName = userName;
         this.email = email;
     }
 
-    public Customer(UUID id, String userName, String email, List<Address> address) {
+    public Customer(Integer id, String userName, String email, List<Address> address) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.address = address;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return this.id;
     }
 
@@ -39,6 +39,6 @@ public class Customer {
     }
 
     public String toString() {
-        return "cord.Customer{id=" + this.id + ", userName='" + this.userName + "', email='" + this.email + "', address=" + this.address + "}";
+        return "Customer{id=" + this.id + ", userName='" + this.userName + "', email='" + this.email + "', address=" + this.address + "}\n";
     }
 }

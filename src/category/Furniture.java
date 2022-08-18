@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Furniture extends Category{
 
-    public Furniture(UUID id, String name) {
+    public Furniture(Integer id, String name) {
         super(id, name);
     }
 

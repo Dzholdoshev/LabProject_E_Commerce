@@ -26,17 +26,17 @@ public class DataGenerator {
         List<Address> customer1AddressList = new ArrayList();
         customer1AddressList.add(address1Customer1);
         customer1AddressList.add(address2Customer1);
-        Customer customer1 = new Customer(UUID.randomUUID(), "ozzy", "ozzy@cydeo.com", customer1AddressList);
-        Customer customer2 = new Customer(UUID.randomUUID(), "mike", "mike@gmail.com");
+        Customer customer1 = new Customer((int) (Math.random()*1000000), "ozzy", "ozzy@cydeo.com", customer1AddressList);
+        Customer customer2 = new Customer((int) (Math.random()*1000000), "mike", "mike@gmail.com");
         StaticConstants.CUSTOMER_LIST.add(customer1);
         StaticConstants.CUSTOMER_LIST.add(customer2);
     }
 
     public static void createCategory() {
-        Category category1 = new Electronic(UUID.randomUUID(), "Electronic");
-        Category category2 = new Furniture(UUID.randomUUID(), "Furniture");
-        Category category3 = new SkinCare(UUID.randomUUID(), "SkinCare");
-        Category category4 = new SkinCare(UUID.randomUUID(), "Food");
+        Category category1 = new Electronic((int) (Math.random()*1000000), "Electronic");
+        Category category2 = new Furniture((int) (Math.random()*1000000), "Furniture");
+        Category category3 = new SkinCare((int) (Math.random()*1000000), "SkinCare");
+        Category category4 = new SkinCare((int) (Math.random()*1000000), "Food");
         StaticConstants.CATEGORY_LIST.add(category1);
         StaticConstants.CATEGORY_LIST.add(category2);
         StaticConstants.CATEGORY_LIST.add(category3);
@@ -44,10 +44,10 @@ public class DataGenerator {
     }
 
     public static void createProduct() {
-        Product product1 = new Product(UUID.randomUUID(), "PS5", 230.72, 7, 7, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
-        Product product2 = new Product(UUID.randomUUID(), "XBOX", 120.34, 15, 15, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
-        Product product3 = new Product(UUID.randomUUID(), "Chair", 30.87, 85, 85, ((Category) StaticConstants.CATEGORY_LIST.get(1)).getId());
-        Product product4 = new Product(UUID.randomUUID(), "Milk", 3.87, 185, 185, UUID.randomUUID());
+        Product product1 = new Product((int) (Math.random()*1000000), "PS5", 230.72, 7, 7, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
+        Product product2 = new Product((int) (Math.random()*1000000), "XBOX", 120.34, 15, 15, ((Category) StaticConstants.CATEGORY_LIST.get(0)).getId());
+        Product product3 = new Product((int) (Math.random()*1000000), "Chair", 30.87, 85, 85, ((Category) StaticConstants.CATEGORY_LIST.get(1)).getId());
+        Product product4 = new Product((int) (Math.random()*1000000), "Milk", 3.87, 185, 185, (int) (Math.random()*1000000));
 
         StaticConstants.PRODUCT_LIST.add(product1);
         StaticConstants.PRODUCT_LIST.add(product2);
@@ -64,8 +64,8 @@ public class DataGenerator {
     }
 
     public static void createDiscount() {
-        Discount amountBasedDiscount = new AmountBasedDiscount(UUID.randomUUID(), "Buy 250 Free 50", 250.0, 50.0);
-        Discount rateBasedDiscount = new RateBasedDiscount(UUID.randomUUID(), "Buy 500 Free %15", 500.0, 15.0);
+        Discount amountBasedDiscount = new AmountBasedDiscount((int) (Math.random()*1000000), "Buy 250 Free 50", 250.0, 50.0);
+        Discount rateBasedDiscount = new RateBasedDiscount((int) (Math.random()*1000000), "Buy 500 Free %15", 500.0, 15.0);
         StaticConstants.DISCOUNT_LIST.add(amountBasedDiscount);
         StaticConstants.DISCOUNT_LIST.add(rateBasedDiscount);
     }
